@@ -49,14 +49,12 @@ get_header('page');
           <div class="col-md-6 pl-0 pr-0">
             <div class="half-cont-right half-cont-md-mx">
               <div class="half-cont-col content-box__info">
-                <h2>About <br> turtas.info project</h2>
+                <h2 class="pre-wrap"><?php echo get_theme_mod( 'about_head_setting' ); ?></h2>
                 <div class="main-block__line line--sm"></div>
-                <div class="content-box__content">
-                  <p>Sužinokite PERKAMO, PARDUODAMO, NUOMOJAMO turto kainą, gaukite
-naudingų patarimų ir rekomendacijų.</p>
-                <p>Lorem ipsum dolor sit amet, in laoreet quaerendum cotidieque est, ex legere forensibus eam. Ipsum iriure voluptatum ad cum, vim in unum probatus voluptatibus. Mel an tantas epicuri, vix ne eros adversarium, soleat tibique duo at. Sed te choro affert comprehensam, cu putent audiam eos. Vix ea doming labores volumus, his te quando dolores. Cu movet vocent mea.</p>
+                <div class="content-box__content pre-wrap">
+                  <?php echo get_theme_mod( 'about_text_setting' ); ?>
                 </div>
-                <a class="posts-btn posts-btn-main" href="#">įrašai <i class="fas fa-long-arrow-alt-right"></i></a>
+                <a class="posts-btn posts-btn-main" href="<?php echo get_page_link(30); ?>">įrašai <i class="fas fa-long-arrow-alt-right"></i></a>
               </div>
             </div>
           </div>

@@ -27,6 +27,22 @@
 									<img src="<?php echo get_template_directory_uri() . '/img/icon_close_sub.png'; ?>" alt="">
 								</div>
 								<div class="submenu-wrap">
+								<?php 
+									$categories = get_the_category();
+									$cat_arr = [];
+									foreach($categories as $category) {
+										array_push($cat_arr, $category->name);
+									}
+									$id = $cat_arr[0];
+									$catIndex = array_search("titulinis-1",$cat_arr);
+									if (true) {
+										 // var_dump($id);
+										 // echo $cat_arr[$catIndex];
+									} else {
+										// wp_nav_menu( array( 'theme_location' => 'landing-1' ) ); 
+									}
+									
+								?>
 									<ul>
 										<li>Lorem ipsum</li>
 										<li>Consectetur</li>

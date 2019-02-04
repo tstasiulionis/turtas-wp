@@ -52,7 +52,7 @@ get_header('page');
               <img src="<?php echo get_template_directory_uri() . '/img/icon_foot-mark.png'; ?>" alt="">
               <p>Office Location:</p>
               <p>Lithuania: 101 Trakų g., Vilnius. LT 012345</p>
-              <p>(<a href="#">show map</a>)</p>
+              <p>(<a href="#"><?php gmwfb( $id = "1"); ?></a>)</p>
             </div>
           </div>
           <div class="col-md-6 contact-box__form">

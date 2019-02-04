@@ -175,6 +175,10 @@
   .half-cont-right {
     width: 480px;
   }
+
+  .posts-block__text-item {
+    min-height: 430px;
+  }
 }
 
 @media (min-width: 992px) and (max-width: 1199.98px) {

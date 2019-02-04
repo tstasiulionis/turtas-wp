@@ -45,7 +45,6 @@ get_header();
           </div>
           <div class="col-12 tab-3-text">
             <?php echo get_theme_mod( 'tab_text3_setting' ); ?>
-            Tikslai. Lorem ipsum dolor sit amet, nec stet congue ea, his nullam primis doctus id, ut quot ceteros sed. Eu mel nobis munere accommodare. Labitur facilisi sapientem est te. Nam id alterum mentitum. Ad vix purto altera. Ius no populo mollis tacimates. Ne has nostrud ponderum, eu propriae cotidieque mea. Soleat hendrerit voluptatibus eu vix, usu ignota verear quaerendum id. Eum agam quas salutatus cu, eos mazim tation deserunt an. An pertinax perpetua pro, qui elit probo in. An pri veri definitionem vituperatoribus, et quando option facilisi mei. In eos veniam quodsi appareat, doctus reprehendunt pri ea.
           </div>
         </div>
       </div>

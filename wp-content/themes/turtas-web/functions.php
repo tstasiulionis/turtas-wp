@@ -184,8 +184,18 @@ function turtasweb_customize_register( $wp_customize ) {
   // Do stuff with $wp_customize, the WP_Customize_Manager object.
 
 	$wp_customize->add_section( 'turtas_tab_text' , array(
-		'title' => __( 'Tab Text' ),
-		'priority' => 105, // Before Widgets.
+		'title' => __( 'Home Tab Text' ),
+		'priority' => 305, // Before Widgets.
+	) );
+
+	$wp_customize->add_section( 'turtas_about' , array(
+		'title' => __( 'About Page' ),
+		'priority' => 305, // Before Widgets.
+	) );
+
+	$wp_customize->add_section( 'turtas_footer' , array(
+		'title' => __( 'Footer' ),
+		'priority' => 305, // Before Widgets.
 	) );
 	
 	$wp_customize->add_setting( 'tab_head1_setting', array(
@@ -242,6 +252,7 @@ function turtasweb_customize_register( $wp_customize ) {
         )
 		)
 	);
+	
 
 	$wp_customize->add_setting( 'tab_text2_setting', array(
 		'default' => 'Kas mes. Lorem ipsum dolor sit amet, nec stet congue ea, his nullam primis doctus id, ut quot ceteros sed. Eu mel nobis munere accommodare. Labitur facilisi sapientem est te. Nam id alterum mentitum. Ad vix purto altera. Ius no populo mollis tacimates. Ne has nostrud ponderum, eu propriae cotidieque mea. Soleat hendrerit voluptatibus eu vix, usu ignota verear quaerendum id. Eum agam quas salutatus cu, eos mazim tation deserunt an. An pertinax perpetua pro, qui elit probo in. An pri veri definitionem vituperatoribus, et quando option facilisi mei. In eos veniam quodsi appareat, doctus reprehendunt pri ea.',
@@ -281,5 +292,201 @@ function turtasweb_customize_register( $wp_customize ) {
 		)
 	);
 
+	$wp_customize->add_setting( 'tab_text3_setting', array(
+		'default' => 'Tikslai. Lorem ipsum dolor sit amet, nec stet congue ea, his nullam primis doctus id, ut quot ceteros sed. Eu mel nobis munere accommodare. Labitur facilisi sapientem est te. Nam id alterum mentitum. Ad vix purto altera. Ius no populo mollis tacimates. Ne has nostrud ponderum, eu propriae cotidieque mea. Soleat hendrerit voluptatibus eu vix, usu ignota verear quaerendum id. Eum agam quas salutatus cu, eos mazim tation deserunt an. An pertinax perpetua pro, qui elit probo in. An pri veri definitionem vituperatoribus, et quando option facilisi mei. In eos veniam quodsi appareat, doctus reprehendunt pri ea.',
+		'sanitize_callback' => 'wp_filter_nohtml_kses',
+	) );
+
+	$wp_customize->add_control(
+    new WP_Customize_Control(
+        $wp_customize,
+        'tab_text3_setting',
+        array(
+						'type' => 'textarea',
+            'label'      => __( 'Tab Text 3', 'turtas' ),
+            'section'    => 'turtas_tab_text',
+            'settings'   => 'tab_text3_setting',
+						'input_attrs' => array(
+							'style' => 'height: 150px',
+						),
+        )
+		)
+	);
+
+	// About Settings
+
+	$wp_customize->add_setting( 'about_head_setting', array(
+		'default' => 'ABOUT TURTAS.INFO PROJECT',
+		'sanitize_callback' => 'wp_filter_nohtml_kses',
+	) );
+
+	$wp_customize->add_control(
+    new WP_Customize_Control(
+        $wp_customize,
+        'about_head_setting',
+        array(
+						'type' => 'textarea',
+            'label'      => __( 'Heading', 'turtas' ),
+            'section'    => 'turtas_about',
+            'settings'   => 'about_head_setting',
+						'input_attrs' => array(
+							'style' => 'height: 50px',
+						),
+        )
+		)
+	);
+
+	$wp_customize->add_setting( 'about_text_setting', array(
+		'default' => 'Sužinokite PERKAMO, PARDUODAMO, NUOMOJAMO turto kainą, gaukite naudingų patarimų ir rekomendacijų. Lorem ipsum dolor sit amet, in laoreet quaerendum cotidieque est, ex legere forensibus eam. Ipsum iriure voluptatum ad cum, vim in unum probatus voluptatibus. Mel an tantas epicuri, vix ne eros adversarium, soleat tibique duo at. Sed te choro affert comprehensam, cu putent audiam eos. Vix ea doming labores volumus, his te quando dolores. Cu movet vocent mea.',
+		'sanitize_callback' => 'wp_filter_nohtml_kses',
+	) );
+
+	$wp_customize->add_control(
+    new WP_Customize_Control(
+        $wp_customize,
+        'about_text_setting',
+        array(
+						'type' => 'textarea',
+            'label'      => __( 'Text', 'turtas' ),
+            'section'    => 'turtas_about',
+            'settings'   => 'about_text_setting',
+						'input_attrs' => array(
+							'style' => 'height: 150px',
+						),
+        )
+		)
+	);
+
+	// Footer settings
+
+	$wp_customize->add_setting( 'footer_phone_setting', array(
+		'default' => '8 688 88888',
+		'sanitize_callback' => 'wp_filter_nohtml_kses',
+	) );
+
+	$wp_customize->add_control(
+    new WP_Customize_Control(
+        $wp_customize,
+        'footer_phone_setting',
+        array(
+            'label'      => __( 'Phone', 'turtas' ),
+            'section'    => 'turtas_footer',
+            'settings'   => 'footer_phone_setting'
+        )
+		)
+	);
+
+	$wp_customize->add_setting( 'footer_email_setting', array(
+		'default' => 'info@turtas.info',
+		'sanitize_callback' => 'wp_filter_nohtml_kses',
+	) );
+
+	$wp_customize->add_control(
+    new WP_Customize_Control(
+        $wp_customize,
+        'footer_email_setting',
+        array(
+            'label'      => __( 'Email', 'turtas' ),
+            'section'    => 'turtas_footer',
+            'settings'   => 'footer_email_setting'
+        )
+		)
+	);
+
+	$wp_customize->add_setting( 'footer_address_setting', array(
+		'default' => 'Miestas, Gatve, Nr. 007',
+		'sanitize_callback' => 'wp_filter_nohtml_kses',
+	) );
+
+	$wp_customize->add_control(
+    new WP_Customize_Control(
+        $wp_customize,
+        'footer_address_setting',
+        array(
+            'label'      => __( 'Address', 'turtas' ),
+            'section'    => 'turtas_footer',
+            'settings'   => 'footer_address_setting'
+        )
+		)
+	);
+
+	$wp_customize->add_setting( 'footer_facebook_setting', array(
+		'default' => '#',
+		'sanitize_callback' => 'wp_filter_nohtml_kses',
+	) );
+
+	$wp_customize->add_control(
+    new WP_Customize_Control(
+        $wp_customize,
+        'footer_facebook_setting',
+        array(
+            'label'      => __( 'Facebook link', 'turtas' ),
+            'section'    => 'turtas_footer',
+            'settings'   => 'footer_facebook_setting'
+        )
+		)
+	);
+
+	$wp_customize->add_setting( 'footer_linkedin_setting', array(
+		'default' => '#',
+		'sanitize_callback' => 'wp_filter_nohtml_kses',
+	) );
+
+	$wp_customize->add_control(
+    new WP_Customize_Control(
+        $wp_customize,
+        'footer_linkedin_setting',
+        array(
+            'label'      => __( 'Linkedin link', 'turtas' ),
+            'section'    => 'turtas_footer',
+            'settings'   => 'footer_linkedin_setting'
+        )
+		)
+	);
+
+	$wp_customize->add_setting( 'footer_instagram_setting', array(
+		'default' => '#',
+		'sanitize_callback' => 'wp_filter_nohtml_kses',
+	) );
+
+	$wp_customize->add_control(
+    new WP_Customize_Control(
+        $wp_customize,
+        'footer_instagram_setting',
+        array(
+            'label'      => __( 'Instagram link', 'turtas' ),
+            'section'    => 'turtas_footer',
+            'settings'   => 'footer_instagram_setting'
+        )
+		)
+	);
+
+	$wp_customize->add_setting( 'footer_youtube_setting', array(
+		'default' => '#',
+		'sanitize_callback' => 'wp_filter_nohtml_kses',
+	) );
+
+	$wp_customize->add_control(
+    new WP_Customize_Control(
+        $wp_customize,
+        'footer_youtube_setting',
+        array(
+            'label'      => __( 'Youtube link', 'turtas' ),
+            'section'    => 'turtas_footer',
+            'settings'   => 'footer_youtube_setting'
+        )
+		)
+	);
+
 }
 add_action( 'customize_register', 'turtasweb_customize_register' );
+
+function register_my_menus() {
+  register_nav_menus(
+    array(
+      'main-menu' => __( 'Main Menu' ),
+      'menu-landing-1' => __( 'Landing 1 Menu' )
+     )
+   );
+ }
+ add_action( 'init', 'register_my_menus' );

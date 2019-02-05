@@ -364,6 +364,7 @@ nav {
   border: 1px solid #be9f86;
   box-sizing: border-box;
   padding: 10px;
+  min-height: 193px;
 }
 
 .posts-box__head {
@@ -375,6 +376,7 @@ nav {
   margin-bottom: 8px;
   color: #070c14;
   border-bottom: 1px solid #be9f86;
+  min-height: 42px;
 }
 
 .posts-box__image {
@@ -955,4 +957,12 @@ textarea.turtas-input {
 
 .pre-wrap {
   white-space: pre-line;
+}
+
+.horizontal-menu-wrapper a:hover {
+  text-decoration: none;
+}
+
+.horizontal-menu-wrapper a {
+  color: #383b41;
 }

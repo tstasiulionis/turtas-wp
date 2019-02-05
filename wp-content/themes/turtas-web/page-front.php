@@ -53,10 +53,11 @@ get_header();
     <div class="index-main-cont">
     
     <?php 
-      query_posts('cat=2');
+      $the_first_query = new WP_Query( array('cat' => 2) );
+      //query_posts('cat=2');
       /* Start the Loop */
-			while ( have_posts() ) :
-				the_post();
+			while ( $the_first_query->have_posts() ) :
+				$the_first_query->the_post();
 
 				/*
 				 * Include the Post-Type-specific template for the content.
@@ -67,84 +68,74 @@ get_header();
 
 			endwhile;
     ?>
-    
-    <div class="posts-box">
-      <img class="posts-box__arrow-l" src="<?php echo get_template_directory_uri() . '/img/arrow_bg_l.png'; ?>" alt="">
-      <img class="posts-box__arrow-r" src="<?php echo get_template_directory_uri() . '/img/arrow_bg_r.png'; ?>" alt="">
-      <div class="container">
-        <div class="row posts-box__row justify-content-center">
-          <div class="col-12">
-            <a href="single-post.html">
-              <div class="post-box__item">
-                <div class="posts-box__head text-center">
-                  Įrašo pavadinimas
-                </div>
-                <div class="posts-box__image">
-                  <div class="post-box__triangle"></div>
-                  <img src="<?php echo get_template_directory_uri() . '/img/posts_img-1.jpg'; ?>" alt="">
-                </div>
-              </div>
-            </a>
-            <a href="single-post.html">
-              <div class="post-box__item">
-                <div class="posts-box__head text-center">
-                  Įrašo pavadinimas
-                </div>
-                <div class="posts-box__image">
-                  <div class="post-box__triangle"></div>
-                  <img src="<?php echo get_template_directory_uri() . '/img/posts_img-2.jpg'; ?>" alt="">
-                </div>
-              </div>
-            </a>
-            <a href="single-post.html">
-              <div class="post-box__item">
-                <div class="posts-box__head text-center">
-                  Įrašo pavadinimas
-                </div>
-                <div class="posts-box__image">
-                  <div class="post-box__triangle"></div>
-                  <img src="<?php echo get_template_directory_uri() . '/img/posts_img-3.jpg'; ?>" alt="">
-                </div>
-              </div>
-            </a>
-            <a href="single-post.html">
-              <div class="post-box__item">
-                <div class="posts-box__head text-center">
-                  Įrašo pavadinimas
-                </div>
-                <div class="posts-box__image">
-                  <div class="post-box__triangle"></div>
-                  <img src="<?php echo get_template_directory_uri() . '/img/posts_img-4.jpg'; ?>" alt="">
-                </div>
-              </div>
-            </a>
-            <a href="single-post.html">
-              <div class="post-box__item">
-                <div class="posts-box__head text-center">
-                  Įrašo pavadinimas
-                </div>
-                <div class="posts-box__image">
-                  <div class="post-box__triangle"></div>
-                  <img src="<?php echo get_template_directory_uri() . '/img/posts_img-5.jpg'; ?>" alt="">
-                </div>
-              </div>
-            </a>
-          </div>
-          
-        </div>
-      </div>
-    </div>
 
     <?php 
-      query_posts('cat=3');
+      $the_second_query = new WP_Query( array('cat' => 3) );
+      //query_posts('cat=3');
       /* Start the Loop */
-			while ( have_posts() ) :
-        $index = $wp_query->current_post + 1;
-				the_post();
+			while ( $the_second_query->have_posts() ) :
+        $index = $the_second_query->current_post + 1;
+				$the_second_query->the_post();
+        //var_dump($the_second_query->found_posts);
         if ($index%2 == 0) {
           get_template_part( 'template-parts/content-index-left', get_post_type() );
         } else {
           get_template_part( 'template-parts/content-index', get_post_type() );
+        }
+
+        if ($index === $the_second_query->found_posts - 2) {
+          ?>
+          
+          <div class="posts-box">
+            <img class="posts-box__arrow-l" src="<?php echo get_template_directory_uri() . '/img/arrow_bg_l.png'; ?>" alt="">
+            <img class="posts-box__arrow-r" src="<?php echo get_template_directory_uri() . '/img/arrow_bg_r.png'; ?>" alt="">
+            <div class="container">
+              <div class="row posts-box__row justify-content-center">
+                <div class="col-12">
+
+                  <?php 
+                    $the_small_posts_query = new WP_Query( array('posts_per_page=2','cat' => array(2,3)) );
+                    
+                    //query_posts('cat=2');
+                    /* Start the Loop */
+                    $count = 0;
+                    while ( $the_small_posts_query->have_posts() ) :
+                      $the_small_posts_query->the_post();
+                      $count++;
+                      /*
+                      * Include the Post-Type-specific template for the content.
+                      * If you want to override this in a child theme, then include a file
+                      * called content-___.php (where ___ is the Post Type name) and that will be used instead.
+                      */
+                      get_template_part( 'template-parts/content-small-posts', get_post_type() );
+                      if ($count > 5) {
+                        break 1;
+                      }
+                    endwhile;
+                    if($count < 5) {
+                      while ( $the_small_posts_query->have_posts() ) :
+                        $the_small_posts_query->the_post();
+                        $count++;
+                        /*
+                        * Include the Post-Type-specific template for the content.
+                        * If you want to override this in a child theme, then include a file
+                        * called content-___.php (where ___ is the Post Type name) and that will be used instead.
+                        */
+                        get_template_part( 'template-parts/content-small-posts', get_post_type() );
+                        if ($count > 4) {
+                          break 1;
+                        }
+                      endwhile;
+                    }
+                  ?>
+
+                </div>
+                
+              </div>
+            </div>
+          </div>
+
+          <?php
         }
 				/*
 				 * Include the Post-Type-specific template for the content.

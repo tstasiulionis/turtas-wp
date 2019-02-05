@@ -19,7 +19,23 @@ get_header('page');
               <img class="inner-header__arrow" src="<?php echo get_template_directory_uri() . '/img/scroll_arrow-left.png"'; ?>" alt="">
               <img class="inner-header__arrow" src="<?php echo get_template_directory_uri() . '/img/scroll_arrow-right.png'; ?>" alt="">
               <div class="horizontal-menu-wrapper">
-                <ul>
+                <?php 
+										$categories = get_the_category();
+										$cat_arr = [];
+										foreach($categories as $category) {
+											array_push($cat_arr, $category->name);
+										}
+										
+										if (array_search("titulinis-1",$cat_arr) >= 0 && array_search("titulinis-1",$cat_arr) !== false) {
+											wp_nav_menu( array( 'theme_location' => 'menu-landing-1' ) );
+										} elseif (array_search("titulinis-2",$cat_arr) >= 0 && array_search("titulinis-2",$cat_arr) !== false) {
+											wp_nav_menu( array( 'theme_location' => 'menu-landing-2' ) );
+										} elseif (array_search("titulinis-3",$cat_arr) >= 0 && array_search("titulinis-3",$cat_arr) !== false) {
+											wp_nav_menu( array( 'theme_location' => 'menu-landing-3' ) );
+										}
+										
+									?>
+                <!--<ul>
                   <li>Submeniu 1</li>
                   <li>Submeniu 2</li>
                   <li>Submeniu 3</li>
@@ -35,7 +51,7 @@ get_header('page');
                   <li>Submeniu 13</li>
                   <li>Submeniu 14</li>
                   <li>Submeniu 15</li>
-                </ul>
+                </ul>-->
               </div>
             </div>
           </div>

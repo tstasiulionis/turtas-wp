@@ -485,7 +485,9 @@ function register_my_menus() {
   register_nav_menus(
     array(
       'main-menu' => __( 'Main Menu' ),
-      'menu-landing-1' => __( 'Landing 1 Menu' )
+      'menu-landing-1' => __( 'Landing 1 Menu' ),
+			'menu-landing-2' => __( 'Landing 2 Menu' ),
+			'menu-landing-3' => __( 'Landing 3 Menu' )
      )
    );
  }

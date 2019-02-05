@@ -28,29 +28,21 @@
 								</div>
 								<div class="submenu-wrap">
 								<?php 
-									$categories = get_the_category();
-									$cat_arr = [];
-									foreach($categories as $category) {
-										array_push($cat_arr, $category->name);
-									}
-									$id = $cat_arr[0];
-									$catIndex = array_search("titulinis-1",$cat_arr);
-									if (true) {
-										 // var_dump($id);
-										 // echo $cat_arr[$catIndex];
-									} else {
-										// wp_nav_menu( array( 'theme_location' => 'landing-1' ) ); 
-									}
-									
-								?>
-									<ul>
-										<li>Lorem ipsum</li>
-										<li>Consectetur</li>
-										<li>Adipisicing</li>
-										<li>Perferendis</li>
-										<li>Corrupti</li>
-										<li>Nam perferendis</li>
-									</ul>
+										$categories = get_the_category();
+										$cat_arr = [];
+										foreach($categories as $category) {
+											array_push($cat_arr, $category->name);
+										}
+										
+										if (array_search("titulinis-1",$cat_arr) >= 0 && array_search("titulinis-1",$cat_arr) !== false) {
+											wp_nav_menu( array( 'theme_location' => 'menu-landing-1' ) );
+										} elseif (array_search("titulinis-2",$cat_arr) >= 0 && array_search("titulinis-2",$cat_arr) !== false) {
+											wp_nav_menu( array( 'theme_location' => 'menu-landing-2' ) );
+										} elseif (array_search("titulinis-3",$cat_arr) >= 0 && array_search("titulinis-3",$cat_arr) !== false) {
+											wp_nav_menu( array( 'theme_location' => 'menu-landing-3' ) );
+										}
+										
+									?>
 								</div>
 								<div class="submenu-triangle submenu-triangle--right"></div>
 							</div>

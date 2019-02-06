@@ -21,18 +21,14 @@ get_header('page');
               <div class="horizontal-menu-wrapper">
                 <?php 
 										$categories = get_the_category();
-										$cat_arr = [];
+										$menu;
 										foreach($categories as $category) {
-											array_push($cat_arr, $category->name);
+											if(strpos($category->name, 'nav') !== false) {
+												$menu = $category->name;
+											}
 										}
 										
-										if (array_search("titulinis-1",$cat_arr) >= 0 && array_search("titulinis-1",$cat_arr) !== false) {
-											wp_nav_menu( array( 'theme_location' => 'menu-landing-1' ) );
-										} elseif (array_search("titulinis-2",$cat_arr) >= 0 && array_search("titulinis-2",$cat_arr) !== false) {
-											wp_nav_menu( array( 'theme_location' => 'menu-landing-2' ) );
-										} elseif (array_search("titulinis-3",$cat_arr) >= 0 && array_search("titulinis-3",$cat_arr) !== false) {
-											wp_nav_menu( array( 'theme_location' => 'menu-landing-3' ) );
-										}
+										wp_nav_menu( array( 'theme_location' => $menu ) );
 										
 									?>
                 <!--<ul>

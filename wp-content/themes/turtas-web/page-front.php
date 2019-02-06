@@ -51,23 +51,6 @@ get_header();
     </div>
 
     <div class="index-main-cont">
-    
-    <?php 
-      $the_first_query = new WP_Query( array('cat' => 2) );
-      //query_posts('cat=2');
-      /* Start the Loop */
-			while ( $the_first_query->have_posts() ) :
-				$the_first_query->the_post();
-
-				/*
-				 * Include the Post-Type-specific template for the content.
-				 * If you want to override this in a child theme, then include a file
-				 * called content-___.php (where ___ is the Post Type name) and that will be used instead.
-				 */
-				get_template_part( 'template-parts/content-index', get_post_type() );
-
-			endwhile;
-    ?>
 
     <?php 
       $the_second_query = new WP_Query( array('cat' => 3) );
@@ -78,9 +61,9 @@ get_header();
 				$the_second_query->the_post();
         //var_dump($the_second_query->found_posts);
         if ($index%2 == 0) {
-          get_template_part( 'template-parts/content-index-left', get_post_type() );
-        } else {
           get_template_part( 'template-parts/content-index', get_post_type() );
+        } else {
+          get_template_part( 'template-parts/content-index-left', get_post_type() );
         }
 
         if ($index === $the_second_query->found_posts - 2) {
@@ -94,7 +77,7 @@ get_header();
                 <div class="col-12">
 
                   <?php 
-                    $the_small_posts_query = new WP_Query( array('posts_per_page=2','cat' => array(2,3)) );
+                    $the_small_posts_query = new WP_Query(array('cat' => 3) );
                     
                     //query_posts('cat=2');
                     /* Start the Loop */

@@ -484,11 +484,35 @@ add_action( 'customize_register', 'turtasweb_customize_register' );
 function register_my_menus() {
   register_nav_menus(
     array(
-      'main-menu' => __( 'Main Menu' ),
-      'menu-landing-1' => __( 'Landing 1 Menu' ),
-			'menu-landing-2' => __( 'Landing 2 Menu' ),
-			'menu-landing-3' => __( 'Landing 3 Menu' )
+      'main-menu' => __( 'Main Menu' )
      )
    );
  }
  add_action( 'init', 'register_my_menus' );
+
+
+
+function register_my_dynamic_menus() {
+	$categories = get_categories(array("hide_empty" => 0));
+	$cat_arr = [];
+	$menu_arr = [];
+	foreach($categories as $category) {
+		
+		if (strpos($category->name, 'nav') !== false) {
+			array_push($cat_arr, $category->name);
+		}
+	}
+
+	foreach($cat_arr as $category) {
+		$menu_arr[$category] = $category;
+	}
+	
+  register_nav_menus(
+	
+    $menu_arr
+   );
+ }
+ add_action( 'init', 'register_my_dynamic_menus' );
+
+// var_dump($menu_arr);
+// die;

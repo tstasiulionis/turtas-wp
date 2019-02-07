@@ -17,10 +17,15 @@
 					<?php $post_content = get_the_content(); ?>
 					<?php if ( has_shortcode( $post_content, '360' ) ) {
 						if (strpos($post_content, '[360') !== false) {
+								if (strpos($post_content, '[360') !== false) {
 								$beginningStr = strpos($post_content, '[360');
 								$endingStr = strpos($post_content, '"]');
 								$shortCode = substr($post_content, $beginningStr, $endingStr);
-								echo do_shortcode($shortCode);
+								$shortcodeEnding =  strpos($shortCode, '"]');
+								$firstShorcode = substr($shortCode, 0, $shortcodeEnding + 2);
+								
+								echo do_shortcode($firstShorcode);
+						}
 						}
 					 } ?>
 				</div>

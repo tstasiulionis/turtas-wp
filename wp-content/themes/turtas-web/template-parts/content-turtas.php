@@ -13,7 +13,9 @@
 	<div class="container">
 		<div class="row post-row">
 			<div class="col-12">
+			<a href="#" class="post-single__img-link">
 				<?php turtas_web_post_thumbnail(); ?>
+			</a>
 				<?php
 				the_content( sprintf(
 					wp_kses(

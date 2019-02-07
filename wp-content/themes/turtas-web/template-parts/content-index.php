@@ -56,14 +56,16 @@
 			</div>
 			<div class="col-md-6 pl-0 pr-0">
 				<div class="main-block-img-wrapper">
-					<!-- [360 width="100%" height="400px" src="yofla360/360-View-Demo"] -->
 					<?php $post_content = get_the_content(); ?>
 					<?php if ( has_shortcode( $post_content, '360' ) ) {
 						if (strpos($post_content, '[360') !== false) {
 								$beginningStr = strpos($post_content, '[360');
 								$endingStr = strpos($post_content, '"]');
 								$shortCode = substr($post_content, $beginningStr, $endingStr);
-								echo do_shortcode($shortCode);
+								$shortcodeEnding =  strpos($shortCode, '"]');
+								$firstShorcode = substr($shortCode, 0, $shortcodeEnding + 2);
+								
+								echo do_shortcode($firstShorcode);
 						}
 					 } ?>
 					

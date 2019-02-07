@@ -158,4 +158,14 @@ $(window).scroll(function () {
     }
 });
 
+// Image gallery
+
+var galleryLink = $('.wp-post-image').attr('src');
+var galleryDataRel = $('.rl-gallery-link').attr('data-rel');
+console.log(galleryDataRel);
+
+$('.post-single__img-link').attr('href', galleryLink);
+$('.post-single__img-link').attr('data-rel', galleryDataRel);
+
+
 });

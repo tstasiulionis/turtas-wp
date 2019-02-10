@@ -15,9 +15,19 @@
 			<div class="col-lg-6 main-block__text-item">
 				<div class="half-cont-left half-cont-sm-mx">
 					<div class="haf-cont-col-6">
+					<?php $categories = get_the_category(); ?>
 						<div class="main-block__head">
 							<div class="main-block__line image-line image-line--right line--lg"></div>
-							<a href="">
+							<?php 
+								$form;
+								foreach($categories as $category) {
+									if(strpos($category->name, 'form') !== false) {
+										$form = $category->name;
+									}
+								}
+							?>
+							
+							<a href="" data-toggle="modal" data-target="#<?php echo $form; ?>">
 								<img src="<?php echo get_template_directory_uri() . '/img/icon_offer_color.png'; ?>" alt="">
 							</a>
 							<img class="main-block__burger" src="<?php echo get_template_directory_uri() . '/img/icon_burger.png'; ?>" alt="">

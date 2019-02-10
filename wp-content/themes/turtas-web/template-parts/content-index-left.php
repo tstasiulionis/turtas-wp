@@ -33,9 +33,19 @@
 			<div class="col-lg-6 main-block__text-item order-1 order-lg-12">
 				<div class="half-cont-right half-cont-sm-mx">
 					<div class="haf-cont-col-6 float-right">
+					<?php $categories = get_the_category(); ?>
 						<div class="main-block__head">
 							<div class="main-block__line image-line image-line--left line--lg"></div>
-							<a href="">
+							<?php 
+								$form;
+								foreach($categories as $category) {
+									if(strpos($category->name, 'form') !== false) {
+										$form = $category->name;
+									}
+								}
+							?>
+							
+							<a href="" data-toggle="modal" data-target="#<?php echo $form; ?>">
 								<img src="<?php echo get_template_directory_uri() . '/img/icon_offer_color.png'; ?>" alt="">
 							</a>
 							<img class="main-block__burger" src="<?php echo get_template_directory_uri() . '/img/icon_burger.png'; ?>" alt="">
@@ -47,7 +57,6 @@
 								<div class="submenu-wrap">
 									<?php 
 										
-										$categories = get_the_category();
 										$menu;
 										foreach($categories as $category) {
 											if(strpos($category->name, 'nav') !== false) {

@@ -129,7 +129,45 @@ get_header();
 
 			endwhile;
     ?>
+    
+
+    <?php 
+    $categories = get_categories();
+    $formCategories = [];
+    foreach($categories as $category) {
+      if (strpos($category->name, 'form') !== false) {
+        array_push($formCategories, $category->name);
+      }
+    }
+    
+    foreach($formCategories as $form) {
+      $firstDashPos = strpos($form, '-');
+      $name = substr($form, $firstDashPos + 1);
       
+      $secondDashPos = strpos($name, '-');
+      $id = substr($name, $secondDashPos + 1);
+      
+      ?>
+      <!-- Modal -->
+      <div class="modal fade" id="<?php echo $form; ?>" tabindex="-1" role="dialog" aria-labelledby="<?php echo $form; ?>Title" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title text-center" id="<?php echo $form; ?>Title">Užklausa</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <?php echo do_shortcode('[contact-form-7 id="' . $id . '" title="'. $name .'"]'); ?>
+            </div>
+          </div>
+        </div>
+      </div>
+      <?php
+
+    }
+    ?>
 
     </div>
 

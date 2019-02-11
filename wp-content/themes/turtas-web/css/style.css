@@ -259,7 +259,7 @@ nav {
 .image-line,
 .post-line {
   position: absolute;
-  z-index: 9999;
+  z-index: 999;
 }
 
 .image-line {
@@ -684,6 +684,7 @@ textarea.turtas-input {
 .about-img-wrapper,
 .main-block-img-wrapper {
   position: relative;
+  overflow: hidden;
 }
 
 .about-img-wrapper img {
@@ -863,7 +864,6 @@ textarea.turtas-input {
 
 .index-main-cont .main-block:first-of-type {
   padding-top: 5px;
-  padding-bottom: 33px;
 }
 
 .logo-wrap {
@@ -971,6 +971,8 @@ textarea.turtas-input {
   visibility: hidden;
 }
 
-/*.rl-gallery-container {
-  height: 0;
-}*/
+iframe.yofla_360_iframe {
+  border: none;
+  position: relative;
+  top: -15px;
+}

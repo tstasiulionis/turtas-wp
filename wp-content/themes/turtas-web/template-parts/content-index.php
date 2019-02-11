@@ -30,7 +30,20 @@
 							<a href="" data-toggle="modal" data-target="#<?php echo $form; ?>">
 								<img src="<?php echo get_template_directory_uri() . '/img/icon_offer_color.png'; ?>" alt="">
 							</a>
-							<img class="main-block__burger" src="<?php echo get_template_directory_uri() . '/img/icon_burger.png'; ?>" alt="">
+							<?php 
+								$menu;
+								foreach($categories as $category) {
+									if(strpos($category->name, 'nav') !== false) {
+										$menu = $category->name;
+									}
+								}
+								if($menu !== NULL) {
+									?>
+										<img class="main-block__burger" src="<?php echo get_template_directory_uri() . '/img/icon_burger.png'; ?>" alt="">
+									<?php
+								}
+							?>
+							
 							<!-- .sub-menu--open -->
 							<div class="main-block__sub-menu animated">
 								<div class="submenu-close">
@@ -38,15 +51,11 @@
 								</div>
 								<div class="submenu-wrap">
 								<?php 
-										$categories = get_the_category();
-										$menu;
-										foreach($categories as $category) {
-											if(strpos($category->name, 'nav') !== false) {
-												$menu = $category->name;
-											}
+										
+										if($menu !== NULL){
+											wp_nav_menu( array( 'theme_location' => $menu ) );
 										}
 										
-										wp_nav_menu( array( 'theme_location' => $menu ) );
 
 									?>
 								</div>

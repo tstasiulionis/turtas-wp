@@ -15,24 +15,39 @@ get_header('page');
         <div class="row">
           <div class="col-12">
             <img class="header-inner__line" src="<?php echo get_template_directory_uri() . '/img/header-line.png'; ?>" alt="">
-            <div class="horizontal-menu">
-              <img class="inner-header__arrow" src="<?php echo get_template_directory_uri() . '/img/scroll_arrow-left.png"'; ?>" alt="">
-              <img class="inner-header__arrow" src="<?php echo get_template_directory_uri() . '/img/scroll_arrow-right.png'; ?>" alt="">
-              <div class="horizontal-menu-wrapper">
-                <?php 
-										$categories = get_the_category();
-										$menu;
-										foreach($categories as $category) {
-											if(strpos($category->name, 'nav') !== false) {
-												$menu = $category->name;
-											}
-										}
-										
-										wp_nav_menu( array( 'theme_location' => $menu ) );
-										
-									?>
-              </div>
-            </div>
+            <?php
+              $categories = get_the_category();
+              $menu;
+              foreach($categories as $category) {
+                if(strpos($category->name, 'nav') !== false) {
+                  $menu = $category->name;
+                }
+              }
+
+              if($menu !== NULL) {
+                ?>
+                <div class="horizontal-menu">
+                  <img class="inner-header__arrow" src="<?php echo get_template_directory_uri() . '/img/scroll_arrow-left.png"'; ?>" alt="">
+                  <img class="inner-header__arrow" src="<?php echo get_template_directory_uri() . '/img/scroll_arrow-right.png'; ?>" alt="">
+                  <div class="horizontal-menu-wrapper">
+                    <?php 
+                        $categories = get_the_category();
+                        $menu;
+                        foreach($categories as $category) {
+                          if(strpos($category->name, 'nav') !== false) {
+                            $menu = $category->name;
+                          }
+                        }
+                        
+                        wp_nav_menu( array( 'theme_location' => $menu ) );
+                        
+                      ?>
+                  </div>
+                </div>
+                <?php
+              }
+             ?>
+            
           </div>
         </div>
       </div>

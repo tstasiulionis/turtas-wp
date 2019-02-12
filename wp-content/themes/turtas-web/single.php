@@ -31,23 +31,6 @@ get_header('page');
 										wp_nav_menu( array( 'theme_location' => $menu ) );
 										
 									?>
-                <!--<ul>
-                  <li>Submeniu 1</li>
-                  <li>Submeniu 2</li>
-                  <li>Submeniu 3</li>
-                  <li>Submeniu 4</li>
-                  <li>Submeniu 5</li>
-                  <li>Submeniu 6</li>
-                  <li>Submeniu 7</li>
-                  <li>Submeniu 8</li>
-                  <li>Submeniu 9</li>
-                  <li>Submeniu 10</li>
-                  <li>Submeniu 11</li>
-                  <li>Submeniu 12</li>
-                  <li>Submeniu 13</li>
-                  <li>Submeniu 14</li>
-                  <li>Submeniu 15</li>
-                </ul>-->
               </div>
             </div>
           </div>
